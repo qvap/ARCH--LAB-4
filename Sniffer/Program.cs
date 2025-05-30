@@ -400,7 +400,7 @@ namespace SnifferTesting
                 usLength = (ushort)IPAddress.NetworkToHostOrder(binaryReader.ReadInt16());
                 sChecksum = IPAddress.NetworkToHostOrder(binaryReader.ReadInt16());
 
-                usDataLength = (ushort)(usLength - 8); // UDP header is 8 bytes
+                usDataLength = (ushort)(usLength - 8); // UDP заголовок 8 байт
 
                 if (usDataLength > 0 && usDataLength <= nReceived - 8)
                 {
@@ -444,7 +444,7 @@ namespace SnifferTesting
             
             try
             {
-                if (nReceived < 12) return; // DNS header minimum size
+                if (nReceived < 12) return; // минимальный размер DNS заголовка
 
                 MemoryStream memoryStream = new MemoryStream(byBuffer, 0, nReceived);
                 BinaryReader binaryReader = new BinaryReader(memoryStream);
@@ -503,10 +503,10 @@ namespace SnifferTesting
                     byte length = (byte)stream.ReadByte();
                     if (length == 0) break;
                     
-                    if (length > 63) // Compressed name
+                    if (length > 63) // Сжатое имя
                     {
-                        stream.Position--; // Go back
-                        stream.Position += 2; // Skip compression pointer
+                        stream.Position--; // Возвращаемся
+                        stream.Position += 2; // Пропускаем точку сжатия
                         break;
                     }
                     

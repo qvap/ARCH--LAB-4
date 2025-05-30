@@ -79,7 +79,8 @@ namespace SnifferTesting
                 Console.WriteLine($"Протокол: {ipheader.Protocol} ({ipheader.ProtocolNumber})");
                 Console.WriteLine($"Контрольная сумма заголовка: 0x{ipheader.Checksum:X4}");
                 Console.WriteLine($"IP-адрес источника: {ipheader.SourceAddress}");
-                Console.WriteLine($"IP-адрес назначения: {ipheader.DestinationAddress}");                Console.WriteLine($"Размер данных после IP заголовка: {ipheader.DataLength} байт");
+                Console.WriteLine($"IP-адрес назначения: {ipheader.DestinationAddress}");
+                Console.WriteLine($"Размер данных после IP заголовка: {ipheader.DataLength} байт");
 
                 // Парсинг пакетов по протоколам
                 if (ipheader.DataLength > 0)
